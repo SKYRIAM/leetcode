@@ -1,0 +1,36 @@
+使用了循环
+class Solution {
+public:
+    bool isPowerOfFour(int num) {
+    while(num%4 == 0 && num>=4)    
+    {
+        
+        num=num/4;  
+    }
+        if(num==1)
+            return true;
+        else
+            return false;
+    }
+        
+   
+};
+
+看了其他人的方法如果想不使用循环和递归的话就需要考虑到二进制
+4的冥数有以下特征：4 100
+                 16 10000
+                 64 1000000
+第一行都是1开头，后面都是0
+可以用（x&(x-1)）来保证只有一个1，
+class Solution {
+public:
+    bool isPowerOfFour(int num) {
+    if(num == 0)
+        return false;
+    if(num&(num-1))
+        return false;
+        
+        return num & 0x55555555; // (0101 0101 0101 0101)
+        
+        
+    }
